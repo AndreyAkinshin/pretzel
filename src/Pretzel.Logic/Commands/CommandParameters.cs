@@ -32,6 +32,7 @@ namespace Pretzel.Logic.Commands
                     { "f|file=", "Path to import file", v => ImportPath = v },
                     { "destination=", "The path to the destination site (default _site)", d => DestinationPath = d},
                     { "drafts", "Add the posts in the drafts folder", v => IncludeDrafts = true },
+                    { "draftsonly", "Add the posts in the drafts folder and ignore _posts", v => DraftsOnly = true },
                     { "nobrowser", "Do not launch a browser", v => LaunchBrowser = false },
                     { "withproject", "Includes a layout VS Solution, to give intellisense when editing razor layout files", v => WithProject = (v!=null) },
                     { "wiki", "Creates a wiki instead of a blog (razor template only)", v => Wiki = (v!=null) },
@@ -60,6 +61,8 @@ namespace Pretzel.Logic.Commands
         public bool Wiki { get; private set; }
 
         public bool IncludeDrafts { get; private set; }
+
+        public bool DraftsOnly { get; private set; }
 
         public bool CleanTarget { get; private set; }
 

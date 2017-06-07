@@ -8,7 +8,8 @@ namespace Pretzel.Logic.Templating.Context
     public class Paginator : Drop
     {
         private readonly SiteContext site;
-        
+        private readonly string lang;
+
         public int TotalPages { get; set; }
         public int TotalPosts { get; set; }
         public int PerPage { get; set; }
@@ -21,13 +22,14 @@ namespace Pretzel.Logic.Templating.Context
         private IList<Page> posts;
         public IList<Page> Posts
         {
-            get { return posts ?? (posts = site.Posts.Skip((Page-1) * PerPage).Take(PerPage).ToList()); }
+            get { return posts ?? (posts = site.Posts.Where(p => p.Lang == lang).Skip((Page-1) * PerPage).Take(PerPage).ToList()); }
         }
 
-        public Paginator(SiteContext site, int totalPages, int perPage, int page)
+        public Paginator(SiteContext site, int totalPages, int perPage, int page, string lang)
         {
             this.site = site;
-            TotalPosts = site.Posts.Count;
+            this.lang = lang;
+            TotalPosts = site.Posts.Count(p => p.Lang == lang);
             TotalPages = totalPages;
             PerPage = perPage;
             Page = page;

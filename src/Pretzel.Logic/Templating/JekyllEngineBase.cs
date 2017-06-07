@@ -123,8 +123,9 @@ namespace Pretzel.Logic.Templating
             if (page.Bag.TryGetValue("paginate", out paginateObj))
             {
                 var paginate = Convert.ToInt32(paginateObj);
-                var totalPages = (int)Math.Ceiling(Context.Posts.Count / Convert.ToDouble(paginateObj));
-                var paginator = new Paginator(Context, totalPages, paginate, 1);
+                var lang = page.Bag["paginate_lang"].ToString();
+                var totalPages = (int)Math.Ceiling(Context.Posts.Count(p => p.Lang == lang) / Convert.ToDouble(paginateObj));
+                var paginator = new Paginator(Context, totalPages, paginate, 1, lang);
                 pageContext.Paginator = paginator;
 
                 var paginateLink = "/page/:page/index.html";
@@ -134,7 +135,7 @@ namespace Pretzel.Logic.Templating
                 var prevLink = page.Url;
                 for (var i = 2; i <= totalPages; i++)
                 {
-                    var newPaginator = new Paginator(Context, totalPages, paginate, i) { PreviousPageUrl = prevLink };
+                    var newPaginator = new Paginator(Context, totalPages, paginate, i, lang) { PreviousPageUrl = prevLink };
                     var link = paginateLink.Replace(":page", Convert.ToString(i));
                     paginator.NextPageUrl = link;
 

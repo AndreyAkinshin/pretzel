@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Taste" type="DotNetProject" factoryName=".NET Project">
+    <option name="PROJECT_PATH" value="$PROJECT_DIR$/Pretzel/Pretzel.csproj" />
+    <option name="PROJECT_KIND" value="Console" />
+    <option name="PROJECT_TFM" value=".NETFramework,Version=v4.5.1" />
+    <option name="EXE_PATH" value="$PROJECT_DIR$/Pretzel/bin/Release/Pretzel.exe" />
+    <option name="PROGRAM_PARAMETERS" value="taste web --debug" />
+    <option name="WORKING_DIRECTORY" value="W:/Work/aakinshin.net/" />
+    <option name="USE_MONO" value="0" />
+    <option name="USE_EXTERNAL_CONSOLE" value="0" />
+    <envs />
+    <method />
+  </configuration>
+</component>

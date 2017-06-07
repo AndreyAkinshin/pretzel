@@ -55,6 +55,11 @@ namespace Pretzel.Logic.Templating.Context
             permalink = permalink.Replace(":i_day", page.Date.Day.ToString());
             permalink = permalink.Replace(":slug", SlugifyFilter.Slugify(GetSlugFromFrontMatter(page) ?? GetTitle(page.File)));
 
+            object lang;
+            page.Bag.TryGetValue("lang", out lang);
+            var isRu = lang is string && ((string) lang == "ru");
+            permalink = permalink.Replace(":lang", isRu ? "/ru" : "");
+
             if (permalink.Contains(":category"))
             {
                 var matches = CategoryRegex.Matches(permalink);

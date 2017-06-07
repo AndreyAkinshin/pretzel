@@ -20,6 +20,7 @@ namespace Pretzel.Logic.Templating.Context
         public IList<Page> Posts { get; set; }
         public DateTime Time { get; set; }
         public Boolean UseDrafts { get; set; }
+        public Boolean DraftsOnly { get; set; }
 
         public List<Page> Pages { get; set; }
 
@@ -88,5 +89,9 @@ namespace Pretzel.Logic.Templating.Context
             Config = new Configuration();
         }
 
+        public IList<Page> RuPages => Pages.Where(p => p.Lang == "ru").ToList();
+        public IList<Page> EnPages => Pages.Where(p => p.Lang == "en").ToList();
+        public IList<Page> RuPosts => Posts.Where(p => p.Lang == "ru").ToList();
+        public IList<Page> EnPosts => Posts.Where(p => p.Lang == "en").ToList();
     }
 }

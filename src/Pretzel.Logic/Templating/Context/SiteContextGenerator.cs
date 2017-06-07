@@ -42,7 +42,7 @@ namespace Pretzel.Logic.Templating.Context
             }
         }
 
-        public SiteContext BuildContext(string path, string destinationPath, bool includeDrafts)
+        public SiteContext BuildContext(string path, string destinationPath, bool includeDrafts, bool draftsOnly = false)
         {
             try
             {
@@ -54,7 +54,8 @@ namespace Pretzel.Logic.Templating.Context
                     Pages = new List<Page>(),
                     Config = _config,
                     Time = DateTime.Now,
-                    UseDrafts = includeDrafts
+                    UseDrafts = includeDrafts,
+                    DraftsOnly = draftsOnly
                 };
 
                 context.Posts = BuildPosts(_config, context).OrderByDescending(p => p.Date).ToList();
@@ -109,19 +110,21 @@ namespace Pretzel.Logic.Templating.Context
         {
             var posts = new List<Page>();
 
-            var postsFolders = fileSystem.Directory.GetDirectories(context.SourceFolder, "_posts", SearchOption.AllDirectories);
-
-            foreach (var postsFolder in postsFolders)
+            if (!context.DraftsOnly)
             {
-                posts.AddRange(fileSystem.Directory
-                    .GetFiles(postsFolder, "*.*", SearchOption.AllDirectories)
-                    .Select(file => CreatePage(context, config, file, true))
-                    .Where(post => post != null)
-                );
+                var postsFolders = fileSystem.Directory.GetDirectories(context.SourceFolder, "_posts", SearchOption.AllDirectories);
+                foreach (var postsFolder in postsFolders)
+                {
+                    posts.AddRange(fileSystem.Directory
+                        .GetFiles(postsFolder, "*.*", SearchOption.AllDirectories)
+                        .Select(file => CreatePage(context, config, file, true))
+                        .Where(post => post != null)
+                    );
+                }
             }
 
             var draftsFolder = Path.Combine(context.SourceFolder, "_drafts");
-            if (context.UseDrafts && fileSystem.Directory.Exists(draftsFolder))
+            if ((context.UseDrafts || context.DraftsOnly) && fileSystem.Directory.Exists(draftsFolder))
             {
                 posts.AddRange(fileSystem.Directory
                     .GetFiles(draftsFolder, "*.*", SearchOption.AllDirectories)

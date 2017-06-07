@@ -47,7 +47,7 @@ namespace Pretzel.Commands
 
             parameters.Parse(arguments);
 
-            var context = Generator.BuildContext(parameters.Path, parameters.DestinationPath, parameters.IncludeDrafts);
+            var context = Generator.BuildContext(parameters.Path, parameters.DestinationPath, parameters.IncludeDrafts, parameters.DraftsOnly);
 
             if (parameters.CleanTarget && FileSystem.Directory.Exists(context.OutputFolder))
             {
@@ -135,7 +135,7 @@ namespace Pretzel.Commands
 
             ((Configuration)Configuration).ReadFromFile();
 
-            var context = Generator.BuildContext(parameters.Path, parameters.DestinationPath, parameters.IncludeDrafts);
+            var context = Generator.BuildContext(parameters.Path, parameters.DestinationPath, parameters.IncludeDrafts, parameters.DraftsOnly);
             if (parameters.CleanTarget && FileSystem.Directory.Exists(context.OutputFolder))
             {
                 FileSystem.Directory.Delete(context.OutputFolder, true);

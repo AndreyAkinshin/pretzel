@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Pretzel.Logic.Templating.Context
 {
@@ -97,6 +99,12 @@ namespace Pretzel.Logic.Templating.Context
             context.Bag["id"] = page.Id;
             context.Bag["url"] = page.Url;
             return context;
+        }
+
+        public string Image(string name, int width = 600)
+        {
+            var pageName = Page.Id.Split(new[] {'/', '\\'}, StringSplitOptions.RemoveEmptyEntries).Last();
+            return $"<div class=\"mx-auto\"><img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{name}\" /></div>";
         }
     }
 }

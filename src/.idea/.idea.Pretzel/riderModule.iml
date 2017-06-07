@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../../.editorconfig">
+      <sourceFolder url="file://$MODULE_DIR$/../../../.editorconfig" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../CONTRIBUTING.md">
+      <sourceFolder url="file://$MODULE_DIR$/../../../CONTRIBUTING.md" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../README.md">
+      <sourceFolder url="file://$MODULE_DIR$/../../../README.md" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../appveyor.yml">
+      <sourceFolder url="file://$MODULE_DIR$/../../../appveyor.yml" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/SonarAnalyzer.CSharp.1.22.0.1631/analyzers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/xunit.core.2.0.0/build/_Desktop/xunit.execution.desktop.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/xunit.runner.visualstudio.2.1.0/build/_common/xunit.abstractions.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/xunit.runner.visualstudio.2.1.0/build/_common/xunit.runner.utility.desktop.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/xunit.runner.visualstudio.2.1.0/build/_common/xunit.runner.visualstudio.testadapter.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Pretzel" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Pretzel.Logic" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Pretzel.ScriptCs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Pretzel.Tests" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel.Logic/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel.Logic/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel.ScriptCs/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel.ScriptCs/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel.Tests/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel.Tests/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Pretzel/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
