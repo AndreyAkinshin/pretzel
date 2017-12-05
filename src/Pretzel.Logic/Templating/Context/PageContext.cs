@@ -106,5 +106,10 @@ namespace Pretzel.Logic.Templating.Context
             var pageName = Page.Id.Split(new[] {'/', '\\'}, StringSplitOptions.RemoveEmptyEntries).Last();
             return $"<div class=\"mx-auto\"><img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{name}\" /></div>";
         }
+        
+        public string GeneratedFile(string fileName)
+        {
+            return File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "web", "_generated", fileName));
+        }
     }
 }
