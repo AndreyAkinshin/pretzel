@@ -104,7 +104,7 @@ namespace Pretzel.Logic.Templating.Context
         public string Image(string name, int width = 600)
         {
             var pageName = Page.Id.Split(new[] {'/', '\\'}, StringSplitOptions.RemoveEmptyEntries).Last();
-            return $"<div class=\"mx-auto\"><img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{name}\" /></div>";
+            return $"<div class=\"mx-auto\"><a href=\"/img/posts/{pageName}/{name}\" target=\"_blank\"><img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{name}\" /></a></div>";
         }
         
         public string GeneratedFile(string fileName)
