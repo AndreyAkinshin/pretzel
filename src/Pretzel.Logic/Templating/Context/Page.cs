@@ -32,5 +32,6 @@ namespace Pretzel.Logic.Templating.Context
         }
 
         public string Lang => Bag.ContainsKey("lang") ? (string) Bag["lang"] : "en";
+        public string Type => Bag.ContainsKey("type") ? (string) Bag["type"] : "post";
     }
 }

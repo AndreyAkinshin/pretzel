@@ -59,6 +59,7 @@ namespace Pretzel.Logic.Templating.Context
             page.Bag.TryGetValue("lang", out lang);
             var isRu = lang is string && ((string) lang == "ru");
             permalink = permalink.Replace(":lang", isRu ? "/ru" : "");
+            permalink = permalink.Replace(":type", page.Type);
 
             if (permalink.Contains(":category"))
             {

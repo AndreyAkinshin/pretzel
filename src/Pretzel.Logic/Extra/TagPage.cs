@@ -8,7 +8,7 @@ namespace Pretzel.Logic.Extra
 {
     public class TagPage : IBeforeProcessingTransform
     {
-        private readonly string BaseUrl = Path.Combine("blog", "tag");
+        private readonly string BaseUrl = "tags";
 
         public void Transform(SiteContext siteContext)
         {
