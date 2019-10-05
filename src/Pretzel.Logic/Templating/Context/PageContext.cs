@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Pretzel.Logic.Templating.Context
 {
@@ -106,7 +107,26 @@ namespace Pretzel.Logic.Templating.Context
             var pageName = Page.Id.Split(new[] {'/', '\\'}, StringSplitOptions.RemoveEmptyEntries).Last();
             return $"<div class=\"mx-auto\"><a href=\"/img/posts/{pageName}/{name}\" target=\"_blank\"><img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{name}\" /></a></div>";
         }
-        
+
+        public string ImageLd(string name, int width = 600)
+        {
+            var pageName = Page.Id.Split(new[] {'/', '\\'}, StringSplitOptions.RemoveEmptyEntries).Last();
+            var imageBaseName = Path.GetFileNameWithoutExtension(name);
+            var imageExt = Path.GetExtension(name);
+            var imageDark = imageBaseName + "-dark" + imageExt;
+            var imageLight = imageBaseName + "-light" + imageExt;
+            var builder = new StringBuilder();
+            builder.AppendLine("<div class=\"mx-auto\">");
+            builder.AppendLine($"<a href=\"/img/posts/{pageName}/{imageLight}\" target=\"_blank\">");
+            builder.AppendLine("<picture>");
+            builder.AppendLine($"<source srcset=\"/img/posts/{pageName}/{imageDark}\" media=\"(prefers-color-scheme: dark)\">");
+            builder.AppendLine($"<img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{imageLight}\">");
+            builder.AppendLine("</picture>");
+            builder.AppendLine("</a>");
+            builder.AppendLine("</div>");
+            return builder.ToString();
+        }
+
         public string GeneratedFile(string fileName)
         {
             return File.ReadAllText(Path.Combine(Environment.CurrentDirectory, "web", "_generated", fileName));
