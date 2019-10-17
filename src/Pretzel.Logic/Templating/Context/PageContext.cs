@@ -119,7 +119,8 @@ namespace Pretzel.Logic.Templating.Context
             builder.AppendLine("<div class=\"mx-auto\">");
             builder.AppendLine($"<a href=\"/img/posts/{pageName}/{imageLight}\" target=\"_blank\">");
             builder.AppendLine("<picture>");
-            builder.AppendLine($"<source srcset=\"/img/posts/{pageName}/{imageDark}\" media=\"(prefers-color-scheme: dark)\">");
+            builder.AppendLine($"<source theme='dark' srcset=\"/img/posts/{pageName}/{imageDark}\" media=\"(prefers-color-scheme: dark)\">");
+            builder.AppendLine($"<source theme='light' srcset=\"/img/posts/{pageName}/{imageLight}\" media=\"(prefers-color-scheme: light), (prefers-color-scheme: no-preference)\">");
             builder.AppendLine($"<img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{imageLight}\">");
             builder.AppendLine("</picture>");
             builder.AppendLine("</a>");
