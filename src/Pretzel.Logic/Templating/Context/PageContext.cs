@@ -105,7 +105,7 @@ namespace Pretzel.Logic.Templating.Context
         public string Image(string name, int width = 600)
         {
             var pageName = Page.Id.Split(new[] {'/', '\\'}, StringSplitOptions.RemoveEmptyEntries).Last();
-            return $"<div class=\"mx-auto\"><a href=\"/img/posts/{pageName}/{name}\" target=\"_blank\"><img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{name}\" /></a></div>";
+            return $"<div class=\"mx-auto\"><a href=\"/img/posts/{pageName}/{name}\" target=\"_blank\"><img class=\"mx-auto d-block img-fluid\" width=\"{width}\" src=\"/img/posts/{pageName}/{name}\" /></a></div>";
         }
 
         public string ImageLd(string name, int width = 600)
@@ -121,7 +121,7 @@ namespace Pretzel.Logic.Templating.Context
             builder.AppendLine("<picture>");
             builder.AppendLine($"<source theme='dark' srcset=\"/img/posts/{pageName}/{imageDark}\" media=\"(prefers-color-scheme: dark)\">");
             builder.AppendLine($"<source theme='light' srcset=\"/img/posts/{pageName}/{imageLight}\" media=\"(prefers-color-scheme: light), (prefers-color-scheme: no-preference)\">");
-            builder.AppendLine($"<img class=\"mx-auto d-block\" width=\"{width}\" src=\"/img/posts/{pageName}/{imageLight}\">");
+            builder.AppendLine($"<img class=\"mx-auto d-block img-fluid\" width=\"{width}\" src=\"/img/posts/{pageName}/{imageLight}\">");
             builder.AppendLine("</picture>");
             builder.AppendLine("</a>");
             builder.AppendLine("</div>");
