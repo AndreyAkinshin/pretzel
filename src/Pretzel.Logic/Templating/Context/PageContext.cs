@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Pretzel.Logic.Exceptions;
 
 namespace Pretzel.Logic.Templating.Context
 {
@@ -126,6 +127,26 @@ namespace Pretzel.Logic.Templating.Context
             builder.AppendLine("</a>");
             builder.AppendLine("</div>");
             return builder.ToString();
+        }
+
+        public string PostRef(string postFileName, string presentation = null)
+        {
+            // get Page
+            var page = Site.Posts.FirstOrDefault(p => p.File.Contains(postFileName));
+            if (page == null)
+            {
+                page = Site.Pages.FirstOrDefault(p => p.File.Contains(postFileName));
+            }
+
+            if (page == null)
+            {
+                throw new PageProcessingException(string.Format("PostRef: no post/page found for '{0}'.", postFileName), null);
+            }
+
+            var url = page.Url;
+            var title = presentation ?? page.Title;
+
+            return $"<a href=\"{url}\">{title}</a>";
         }
 
         public string GeneratedFile(string fileName)
